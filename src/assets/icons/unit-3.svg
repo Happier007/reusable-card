@@ -1,0 +1,27 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g clip-path="url(#clip0_4134_226559)">
+    <path
+      d="M5 9C5 8.44772 4.55228 8 4 8C3.44772 8 3 8.44772 3 9H5ZM4 16H3C3 16.5523 3.44772 17 4 17V16ZM28 16V17C28.5523 17 29 16.5523 29 16H28ZM29 9C29 8.44772 28.5523 8 28 8C27.4477 8 27 8.44772 27 9H29ZM3 9V16H5V9H3ZM4 17H28V15H4V17ZM29 16V9H27V16H29Z"
+      fill="currentColor"/>
+    <path
+      d="M15 16C15 16.5523 15.4477 17 16 17C16.5523 17 17 16.5523 17 16H15ZM17 9C17 8.44772 16.5523 8 16 8C15.4477 8 15 8.44772 15 9H17ZM17 16V9H15V16H17Z"
+      fill="currentColor"/>
+    <path
+      d="M15 23C15 23.5523 15.4477 24 16 24C16.5523 24 17 23.5523 17 23H15ZM17 16C17 15.4477 16.5523 15 16 15C15.4477 15 15 15.4477 15 16H17ZM17 23V16H15V23H17Z"
+      fill="currentColor"/>
+    <path
+      d="M3 23C3 23.5523 3.44772 24 4 24C4.55228 24 5 23.5523 5 23H3ZM5 16C5 15.4477 4.55228 15 4 15C3.44772 15 3 15.4477 3 16H5ZM5 23V16H3V23H5Z"
+      fill="currentColor"/>
+    <circle cx="4" cy="4" r="2" fill="currentColor"/>
+    <circle cx="4" cy="28" r="2" fill="currentColor"/>
+    <circle cx="16" cy="4" r="2" fill="currentColor"/>
+    <circle cx="16" cy="28" r="2" fill="currentColor"/>
+    <circle cx="28" cy="4" r="2" fill="currentColor"/>
+    <circle cx="28" cy="28" r="2" fill="currentColor"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_4134_226559">
+      <rect width="28" height="28" fill="white" transform="translate(2 2)"/>
+    </clipPath>
+  </defs>
+</svg>
