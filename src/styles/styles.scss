@@ -1,0 +1,83 @@
+@import 'bootstrap';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Tahoma', serif;
+
+  * {
+    font-family: Tahoma, serif;
+  }
+}
+
+.hover-border {
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 1px;
+    width: 4px;
+    height: 100%;
+    content: '';
+    background-color: var(--hover-border-color);
+  }
+}
+
+.button {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.square-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 2px;
+  background: #F5F8FD;
+}
+
+.icon_size-m {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.icon_size-l {
+  width: 32px !important;
+  height: 32px !important;
+}
+
+.height_size-m {
+  height: 24px;
+  line-height: 24px;
+}
+
+.selected-active {
+  background: #D9EDFF;
+}
+
+.collapsed-block {
+  height: 0;
+  overflow: hidden;
+}
+
+.show-block {
+  height: 100% !important;
+}
+
+.rotate-180 {
+  transform: scaleY(-1);
+}
+
+.hover-icon {
+  &:hover {
+    path {
+      fill: red;
+    }
+  }
+}

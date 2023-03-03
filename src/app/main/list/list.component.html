@@ -1,0 +1,172 @@
+<section>
+  <ng-container *ngIf="cars$ | async as cars">
+    <div class="container">
+      <div class="row">
+        <div *ngFor="let item of cars" class="col-4 p-2">
+          <app-card>
+            <ng-container
+              slot="iconTmp"
+              [ngTemplateOutlet]="icon"
+              [ngTemplateOutletContext]="{$implicit: item.icon}">
+            </ng-container>
+
+            <ng-container
+              slot="headerTmp"
+              [ngTemplateOutlet]="header"
+              [ngTemplateOutletContext]="{
+                type: item.type,
+                number: item.carNumber,
+                mileage: item.mileage,
+                model: item.model,
+                year: item.yearOfCar
+              }">
+            </ng-container>
+
+            <ng-container
+              slot="actionTmp"
+              [ngTemplateOutlet]="actions"
+              [ngTemplateOutletContext]="{$implicit: item.actions, id: item.id}">
+            </ng-container>
+
+            <ng-container
+              slot="contentTmp"
+              [ngTemplateOutlet]="content"
+              [ngTemplateOutletContext]="{moreAbout: item.carInfoAccess, info: item.carInfo, detailInfo: item.detailInfo}">
+            </ng-container>
+          </app-card>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="autoParts$ | async as autoParts">
+    <div class="container">
+      <div class="row">
+        <div *ngFor="let item of autoParts" class="col-4 p-2">
+          <app-card>
+            <ng-container
+              slot="iconTmp"
+              [ngTemplateOutlet]="icon"
+              [ngTemplateOutletContext]="{$implicit: item.icon}">
+            </ng-container>
+
+            <ng-container
+              slot="headerTmp"
+              [ngTemplateOutlet]="header"
+              [ngTemplateOutletContext]="{
+                type: item.type,
+                mileage: item.mileage,
+                model: item.modelCar,
+                year: item.code
+              }">
+            </ng-container>
+
+            <ng-container
+              slot="actionTmp"
+              [ngTemplateOutlet]="actions"
+              [ngTemplateOutletContext]="{$implicit: item.actions, id: item.id}">
+            </ng-container>
+
+            <ng-container
+              slot="contentTmp"
+              [ngTemplateOutlet]="content"
+              [ngTemplateOutletContext]="{
+                moreAbout: item.partsInfoAccess,
+                info: item.partsInfo,
+                detailInfo: item.detailInfo
+              }">
+            </ng-container>
+          </app-card>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</section>
+
+<!--     TEMPLATES     -->
+
+<!--header-->
+<ng-template
+  #header
+  let-type="type" let-number="number" let-mileage="mileage" let-model="model" let-year="year">
+  <div class="d-flex flex-column">
+    <div class="d-flex align-items-baseline justify-content-start height_size-m">
+      <span *ngIf="type" class="pe-2">{{type}}</span>
+      <span *ngIf="number" class="pe-2">{{number}}</span>
+      <span *ngIf="mileage" class="pe-2">{{mileage}}</span>
+    </div>
+
+    <div class="d-flex align-items-baseline justify-content-start height_size-m">
+      <span *ngIf="model" class="pe-2">{{model}}</span>
+      <span *ngIf="year">{{year}}</span>
+    </div>
+  </div>
+</ng-template>
+
+<!--icon-->
+<ng-template #icon let-icon>
+  <mat-icon class="icon_size-l" [svgIcon]=icon></mat-icon>
+</ng-template>
+
+<ng-template #actions let-actions let-id="id">
+  <div>
+    <button
+      *ngFor="let typeAction of actions"
+      (click)="onAction($event, id)"
+      class="button square-btn ms-3" matRipple [matRippleCentered]="true">
+      <mat-icon class="icon_size-m hover-icon" [svgIcon]="typeAction"></mat-icon>
+    </button>
+  </div>
+</ng-template>
+
+<!--content-->
+<ng-template
+  #content
+  let-moreAbout="moreAbout" let-info="info" let-detailInfo="detailInfo">
+  <div class="d-flex flex-column align-items-start">
+    <div
+      *ngIf="moreAbout"
+      class="d-flex align-items-center justify-content-between w-100 height_size-m">
+
+      <button
+        (click)="onMoreAbout($event)"
+        class="button d-inline-flex align-items-center" matRipple [matRippleCentered]="true">
+        <mat-icon class="icon_size-m pe-2" svgIcon="info"></mat-icon>
+        <span>Подробнее о технике</span>
+      </button>
+
+      <div *ngIf="info">
+        <div *ngIf="info?.units" class="d-inline-flex align-items-center">
+          <mat-icon class="icon_size-m pe-2" svgIcon="unit-5"></mat-icon>
+          <div>
+            <span class="pe-2">{{info.units}}</span>
+            <span>узла</span>
+          </div>
+        </div>
+
+        <div *ngIf="info?.sample" class="d-inline-flex align-items-center ms-3">
+          <mat-icon class="icon_size-m pe-2" svgIcon="sample-4"></mat-icon>
+          <div>
+            <span class="pe-2">{{info.sample}}</span>
+            <span>проб</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="detailInfo" appCollapse>
+      <button
+        #collapseBtn
+        (click)="onChangeState($event)"
+        class="button d-inline-flex align-items-center height_size-m" matRipple>
+        <mat-icon
+          class="collapsed-arrow icon_size-m pe-2"
+          svgIcon="arrow-down">
+        </mat-icon>
+        <span class="collapse-name_btn">{{collapseLabel.CLOSED}}</span>
+      </button>
+
+      <div #collapseBlock class="collapsed-block">{{detailInfo}}</div>
+    </div>
+  </div>
+</ng-template>
